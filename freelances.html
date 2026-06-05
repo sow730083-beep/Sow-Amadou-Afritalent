@@ -62,6 +62,8 @@
               <a class="btn btn-primary ms-2" href="#">Rejoindre AfriTalent</a>
             </li>
           </ul>
+          <!-- Bouton Dark Mode -->
+<button id="btn-dark-mode" aria-label="Activer le mode sombre">🌙</button>
         </div>
 
       </div>
@@ -69,12 +71,240 @@
   </header>
 
   <!-- CONTENU PRINCIPAL -->
-    <main>
+    
+<main>
+
+  <!-- ========== SECTION FILTRES ========== -->
+  <section id="filtres">
+    <div class="container">
+      <h1 class="text-center">Nos Freelances</h1>
+      <p class="text-center">Trouvez le talent qu'il vous faut parmi nos experts vérifiés</p>
+
+      <!-- Boutons de filtrage (le JS les activera au commit 8) -->
+      <div class="filtres-boutons text-center">
+        <button class="btn-filtre actif" data-categorie="tous">Tous</button>
+        <button class="btn-filtre" data-categorie="dev">Développement Web</button>
+        <button class="btn-filtre" data-categorie="design">Design UI/UX</button>
+        <button class="btn-filtre" data-categorie="marketing">Marketing Digital</button>
+        <button class="btn-filtre" data-categorie="data">Data & IA</button>
+        <button class="btn-filtre" data-categorie="redaction">Rédaction Tech</button>
+        <button class="btn-filtre" data-categorie="devops">DevOps & Cloud</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GRILLE DE FREELANCES ========== -->
+  <section id="grille-freelances">
+    <div class="container">
+      <div class="row" id="liste-freelances">
+
+        <!-- CARTE 1 -->
+        <div class="col-lg-4 col-md-6 col-12" data-categorie="dev">
+          <div class="freelance-card">
+            <img src="images/f1.jpg" alt="Photo de Mamadou Sow">
+            <h3>Mamadou Sow</h3>
+            <span class="specialite">Développement Web</span>
+            <p>Développeur Full Stack spécialisé React et Node.js avec 5 ans d'expérience.</p>
+            <div class="carte-footer">
+              <span class="tarif">15 000 FCFA / h</span>
+              <div class="note">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-half"></i>
+                <span>4.5</span>
+              </div>
+            </div>
+            <a href="#" class="btn btn-outline-primary w-100">Voir le profil</a>
+          </div>
+        </div>
+
+        <!-- CARTE 2 -->
+        <div class="col-lg-4 col-md-6 col-12" data-categorie="design">
+          <div class="freelance-card">
+            <img src="images/f2.jpg" alt="Photo de Aïssatou Bah">
+            <h3>Aïssatou Bah</h3>
+            <span class="specialite">Design UI/UX</span>
+            <p>Designer créative passionnée par l'expérience utilisateur et le design inclusif.</p>
+            <div class="carte-footer">
+              <span class="tarif">12 000 FCFA / h</span>
+              <div class="note">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <span>5.0</span>
+              </div>
+            </div>
+            <a href="#" class="btn btn-outline-primary w-100">Voir le profil</a>
+          </div>
+        </div>
+
+        <!-- CARTE 3 -->
+        <div class="col-lg-4 col-md-6 col-12" data-categorie="marketing">
+          <div class="freelance-card">
+            <img src="images/f3.jpg" alt="Photo de Oumar Diop">
+            <h3>Oumar Diop</h3>
+            <span class="specialite">Marketing Digital</span>
+            <p>Expert en stratégie digitale, SEO et gestion de campagnes publicitaires.</p>
+            <div class="carte-footer">
+              <span class="tarif">10 000 FCFA / h</span>
+              <div class="note">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star"></i>
+                <span>4.0</span>
+              </div>
+            </div>
+            <a href="#" class="btn btn-outline-primary w-100">Voir le profil</a>
+          </div>
+        </div>
+
+        <!-- CARTE 4 -->
+        <div class="col-lg-4 col-md-6 col-12" data-categorie="data">
+          <div class="freelance-card">
+            <img src="images/f4.jpg" alt="Photo de Khadija Ndiaye">
+            <h3>Khadija Ndiaye</h3>
+            <span class="specialite">Data & IA</span>
+            <p>Data scientist spécialisée en machine learning et analyse prédictive.</p>
+            <div class="carte-footer">
+              <span class="tarif">20 000 FCFA / h</span>
+              <div class="note">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <span>5.0</span>
+              </div>
+            </div>
+            <a href="#" class="btn btn-outline-primary w-100">Voir le profil</a>
+          </div>
+        </div>
+
+        <!-- CARTE 5 -->
+        <div class="col-lg-4 col-md-6 col-12" data-categorie="devops">
+          <div class="freelance-card">
+            <img src="images/f5.jpg" alt="Photo de Ibrahim Koné">
+            <h3>Ibrahim Koné</h3>
+            <span class="specialite">DevOps & Cloud</span>
+            <p>Ingénieur DevOps expert AWS et Docker, automatisation et CI/CD.</p>
+            <div class="carte-footer">
+              <span class="tarif">18 000 FCFA / h</span>
+              <div class="note">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-half"></i>
+                <span>4.5</span>
+              </div>
+            </div>
+            <a href="#" class="btn btn-outline-primary w-100">Voir le profil</a>
+          </div>
+        </div>
+
+        <!-- CARTE 6 -->
+        <div class="col-lg-4 col-md-6 col-12" data-categorie="redaction">
+          <div class="freelance-card">
+            <img src="images/f6.jpg" alt="Photo de Mariama Camara">
+            <h3>Mariama Camara</h3>
+            <span class="specialite">Rédaction Tech</span>
+            <p>Rédactrice spécialisée en contenu technique, blogs et documentation.</p>
+            <div class="carte-footer">
+              <span class="tarif">8 000 FCFA / h</span>
+              <div class="note">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star"></i>
+                <span>4.0</span>
+              </div>
+            </div>
+            <a href="#" class="btn btn-outline-primary w-100">Voir le profil</a>
+          </div>
+        </div>
+
+        <!-- CARTE 7 -->
+        <div class="col-lg-4 col-md-6 col-12" data-categorie="dev">
+          <div class="freelance-card">
+            <img src="images/f7.jpg" alt="Photo de Seydou Coulibaly">
+            <h3>Seydou Coulibaly</h3>
+            <span class="specialite">Développement Web</span>
+            <p>Développeur mobile Flutter et React Native, apps iOS et Android.</p>
+            <div class="carte-footer">
+              <span class="tarif">16 000 FCFA / h</span>
+              <div class="note">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <span>5.0</span>
+              </div>
+            </div>
+            <a href="#" class="btn btn-outline-primary w-100">Voir le profil</a>
+          </div>
+        </div>
+
+        <!-- CARTE 8 -->
+        <div class="col-lg-4 col-md-6 col-12" data-categorie="design">
+          <div class="freelance-card">
+            <img src="images/f8.jpg" alt="Photo de Rokiatou Sanogo">
+            <h3>Rokiatou Sanogo</h3>
+            <span class="specialite">Design UI/UX</span>
+            <p>Spécialiste Figma et prototypage rapide pour startups africaines.</p>
+            <div class="carte-footer">
+              <span class="tarif">11 000 FCFA / h</span>
+              <div class="note">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-half"></i>
+                <span>4.5</span>
+              </div>
+            </div>
+            <a href="#" class="btn btn-outline-primary w-100">Voir le profil</a>
+          </div>
+        </div>
+
+        <!-- CARTE 9 -->
+        <div class="col-lg-4 col-md-6 col-12" data-categorie="data">
+          <div class="freelance-card">
+            <img src="images/f9.jpg" alt="Photo de Cheikh Touré">
+            <h3>Cheikh Touré</h3>
+            <span class="specialite">Data & IA</span>
+            <p>Expert en visualisation de données et tableaux de bord Power BI.</p>
+            <div class="carte-footer">
+              <span class="tarif">17 000 FCFA / h</span>
+              <div class="note">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star"></i>
+                <span>4.0</span>
+              </div>
+            </div>
+            <a href="#" class="btn btn-outline-primary w-100">Voir le profil</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
 
       <!-- Ici tu écriras le catalogue des freelances -->
       <!-- Barre de filtres + grille de profils -->
 
-    </main>
+</main>
 
   <!-- PIED DE PAGE -->
   <footer>
@@ -91,5 +321,9 @@
   <!-- Ton propre fichier JavaScript (vide pour l'instant) -->
   <script src="js/main.js"></script>
 
+  <!-- Bouton retour en haut -->
+<button id="btn-top" aria-label="Retour en haut de la page">
+  <i class="bi bi-arrow-up"></i>
+</button>
 </body>
 </html>

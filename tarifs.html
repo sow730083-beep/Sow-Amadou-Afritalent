@@ -62,6 +62,8 @@
               <a class="btn btn-primary ms-2" href="#">Rejoindre AfriTalent</a>
             </li>
           </ul>
+          <!-- Bouton Dark Mode -->
+<button id="btn-dark-mode" aria-label="Activer le mode sombre">🌙</button>
         </div>
 
       </div>
@@ -69,12 +71,159 @@
   </header>
 
   <!-- CONTENU PRINCIPAL -->
-    <main>
+    
 
       <!-- Ici tu écriras les plans tarifaires -->
       <!-- 3 cartes : Gratuit, Pro, Entreprise + FAQ -->
+<main>
 
-    </main>
+  <!-- ========== SECTION PLANS ========== -->
+  <section id="plans">
+    <div class="container">
+      <h1 class="text-center">Nos Tarifs</h1>
+      <p class="text-center">Choisissez le plan qui correspond à vos besoins</p>
+
+      <div class="row justify-content-center">
+
+        <!-- Plan Gratuit -->
+        <div class="col-lg-4 col-md-6">
+          <div class="plan-card">
+            <h3>Gratuit</h3>
+            <div class="prix">0 FCFA<span>/mois</span></div>
+            <ul class="fonctionnalites">
+              <li><i class="bi bi-check-circle-fill"></i> Profil freelance de base</li>
+              <li><i class="bi bi-check-circle-fill"></i> 3 candidatures par mois</li>
+              <li><i class="bi bi-check-circle-fill"></i> Accès au catalogue</li>
+              <li><i class="bi bi-x-circle-fill"></i> Mise en avant du profil</li>
+              <li><i class="bi bi-x-circle-fill"></i> Support prioritaire</li>
+              <li><i class="bi bi-x-circle-fill"></i> Badge vérifié</li>
+            </ul>
+            <a href="#" class="btn btn-outline-primary w-100">Commencer gratuitement</a>
+          </div>
+        </div>
+
+        <!-- Plan Pro (mis en avant) -->
+        <div class="col-lg-4 col-md-6">
+          <div class="plan-card plan-populaire">
+            <div class="badge-populaire">⭐ Populaire</div>
+            <h3>Pro</h3>
+            <div class="prix">9 900 FCFA<span>/mois</span></div>
+            <ul class="fonctionnalites">
+              <li><i class="bi bi-check-circle-fill"></i> Profil complet et mis en avant</li>
+              <li><i class="bi bi-check-circle-fill"></i> Candidatures illimitées</li>
+              <li><i class="bi bi-check-circle-fill"></i> Accès au catalogue</li>
+              <li><i class="bi bi-check-circle-fill"></i> Mise en avant du profil</li>
+              <li><i class="bi bi-check-circle-fill"></i> Support prioritaire</li>
+              <li><i class="bi bi-x-circle-fill"></i> Badge vérifié</li>
+            </ul>
+            <a href="#" class="btn btn-primary w-100">Choisir Pro</a>
+          </div>
+        </div>
+
+        <!-- Plan Entreprise -->
+        <div class="col-lg-4 col-md-6">
+          <div class="plan-card">
+            <h3>Entreprise</h3>
+            <div class="prix">49 900 FCFA<span>/mois</span></div>
+            <ul class="fonctionnalites">
+              <li><i class="bi bi-check-circle-fill"></i> Tout ce qui est dans Pro</li>
+              <li><i class="bi bi-check-circle-fill"></i> Candidatures illimitées</li>
+              <li><i class="bi bi-check-circle-fill"></i> Accès au catalogue</li>
+              <li><i class="bi bi-check-circle-fill"></i> Mise en avant du profil</li>
+              <li><i class="bi bi-check-circle-fill"></i> Support prioritaire 24/7</li>
+              <li><i class="bi bi-check-circle-fill"></i> Badge vérifié</li>
+            </ul>
+            <a href="#" class="btn btn-outline-primary w-100">Contacter l'équipe</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section id="faq">
+    <div class="container">
+      <h2 class="text-center">Questions fréquentes</h2>
+
+      <div class="accordion" id="accordionFAQ">
+
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button" type="button"
+              data-bs-toggle="collapse" data-bs-target="#faq1">
+              Comment fonctionne AfriTalent ?
+            </button>
+          </h3>
+          <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#accordionFAQ">
+            <div class="accordion-body">
+              AfriTalent met en relation des freelances tech africains avec des entreprises à la recherche de compétences. Créez votre profil, explorez les missions et candidatez en quelques clics.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button"
+              data-bs-toggle="collapse" data-bs-target="#faq2">
+              Puis-je changer de plan à tout moment ?
+            </button>
+          </h3>
+          <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+            <div class="accordion-body">
+              Oui, vous pouvez upgrader ou downgrader votre plan à tout moment depuis votre espace personnel. Les changements prennent effet immédiatement.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button"
+              data-bs-toggle="collapse" data-bs-target="#faq3">
+              Comment sont sécurisés les paiements ?
+            </button>
+          </h3>
+          <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+            <div class="accordion-body">
+              Tous les paiements sont sécurisés via notre système d'escrow. Le client dépose les fonds, le freelance effectue la mission, et les fonds sont libérés après validation.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button"
+              data-bs-toggle="collapse" data-bs-target="#faq4">
+              Y a-t-il une commission prélevée sur les missions ?
+            </button>
+          </h3>
+          <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+            <div class="accordion-body">
+              Une commission de 5% est prélevée sur chaque mission complétée. Cette commission finance le développement de la plateforme et le support client.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button"
+              data-bs-toggle="collapse" data-bs-target="#faq5">
+              Comment obtenir le badge vérifié ?
+            </button>
+          </h3>
+          <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+            <div class="accordion-body">
+              Le badge vérifié est disponible avec le plan Entreprise. Il nécessite une vérification d'identité et la validation de vos compétences par notre équipe.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+    
 
   <!-- PIED DE PAGE -->
   <footer>
@@ -91,5 +240,9 @@
   <!-- Ton propre fichier JavaScript (vide pour l'instant) -->
   <script src="js/main.js"></script>
 
+  <!-- Bouton retour en haut -->
+<button id="btn-top" aria-label="Retour en haut de la page">
+  <i class="bi bi-arrow-up"></i>
+</button>
 </body>
 </html>
