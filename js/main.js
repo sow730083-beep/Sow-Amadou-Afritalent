@@ -104,3 +104,115 @@ if (btnTop) {
   // On écoute le clic pour remonter
   btnTop.addEventListener('click', remonterEnHaut);
 }
+
+
+/* ============================================
+   AFRITALENT — main.js
+   Commit 7 : Compteurs animés + Animations fade-in
+   ============================================ */
+
+
+/* ==========================================
+   4. COMPTEURS ANIMÉS AU SCROLL
+   ========================================== */
+
+// On récupère tous les éléments qui ont la classe "counter"
+const tousLesCompteurs = document.querySelectorAll('.counter');
+
+// Cette fonction anime un seul compteur
+// Elle reçoit l'élément HTML et sa valeur cible
+function animerCompteur(element, valeurCible) {
+  let valeurActuelle = 0;
+
+  // On calcule la vitesse : plus le chiffre est grand,
+  // plus on avance vite à chaque étape
+  const vitesse = Math.ceil(valeurCible / 100);
+
+  // setInterval répète une action toutes les X millisecondes
+  const intervalle = setInterval(function () {
+
+    valeurActuelle += vitesse;
+
+    if (valeurActuelle >= valeurCible) {
+      // On a atteint la valeur cible : on arrête
+      element.textContent = valeurCible.toLocaleString('fr-FR');
+      clearInterval(intervalle);
+    } else {
+      // On n'a pas encore atteint la cible : on continue
+      element.textContent = valeurActuelle.toLocaleString('fr-FR');
+    }
+
+  }, 20); // toutes les 20 millisecondes
+}
+
+
+// IntersectionObserver : détecte quand un élément
+// entre dans la zone visible de l'écran (le viewport)
+const observateurCompteurs = new IntersectionObserver(
+
+  function (entries) {
+    // entries = liste des éléments observés
+    entries.forEach(function (entry) {
+
+      // entry.isIntersecting = true quand l'élément est visible
+      if (entry.isIntersecting) {
+
+        const element = entry.target;
+
+        // On lit la valeur cible depuis l'attribut data-target
+        // ex : <span class="counter" data-target="2500">
+        const valeurCible = parseInt(element.dataset.target);
+
+        // On lance l'animation
+        animerCompteur(element, valeurCible);
+
+        // On arrête d'observer cet élément pour ne pas
+        // relancer l'animation à chaque fois
+        observateurCompteurs.unobserve(element);
+      }
+    });
+  },
+
+  // Options : déclenche quand 20% de l'élément est visible
+  { threshold: 0.2 }
+);
+
+// On demande à l'observateur de surveiller chaque compteur
+tousLesCompteurs.forEach(function (compteur) {
+  observateurCompteurs.observe(compteur);
+});
+
+
+/* ==========================================
+   5. ANIMATIONS FADE-IN DES SECTIONS
+   ========================================== */
+
+// On récupère tous les éléments avec la classe "fade-in"
+// (tu les as ajoutés sur tes sections au commit 4)
+const elementsFadeIn = document.querySelectorAll('.fade-in');
+
+// Un deuxième IntersectionObserver pour les animations
+const observateurFadeIn = new IntersectionObserver(
+
+  function (entries) {
+    entries.forEach(function (entry) {
+
+      if (entry.isIntersecting) {
+        // On ajoute la classe "visible" définie dans le CSS
+        // Le CSS s'occupe de l'animation (opacity + translateY)
+        entry.target.classList.add('visible');
+
+        // On arrête d'observer : l'animation ne se joue qu'une fois
+        observateurFadeIn.unobserve(entry.target);
+      }
+    });
+  },
+
+  // Déclenche quand 10% de l'élément est visible
+  { threshold: 0.1 }
+);
+
+// On observe chaque élément fade-in
+elementsFadeIn.forEach(function (element) {
+  observateurFadeIn.observe(element);
+});
