@@ -823,3 +823,33 @@ footer h5 {
 .carte-maps iframe {
   display: block;
 }
+
+/* Sécurité : si JS ne charge pas, le contenu reste visible */
+.fade-in {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: none;
+}
+/* ========== BOUTON DARK MODE ========== */
+#btn-dark-mode {
+  background: none;
+  border: 2px solid var(--couleur-bordure);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--couleur-texte);
+  transition: all 0.2s;
+  padding: 0;
+}
+
+#btn-dark-mode:hover {
+  border-color: var(--couleur-primaire);
+  color: var(--couleur-primaire);
+}
