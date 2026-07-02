@@ -216,3 +216,266 @@ const observateurFadeIn = new IntersectionObserver(
 elementsFadeIn.forEach(function (element) {
   observateurFadeIn.observe(element);
 });
+
+
+/* ============================================
+   AFRITALENT — main.js
+   Commit 8 : Filtrage freelances + Validation formulaire
+   ============================================ */
+
+
+/* ==========================================
+   6. FILTRAGE DYNAMIQUE DES FREELANCES
+   ========================================== */
+
+// On récupère tous les boutons de filtre
+const boutonsFiltres = document.querySelectorAll('.btn-filtre');
+
+// On récupère toutes les cartes freelances
+// Chaque carte a un attribut data-categorie sur sa colonne
+const colonnesFreelances = document.querySelectorAll('#liste-freelances > div');
+
+// Cette fonction filtre les cartes selon la catégorie choisie
+function filtrerFreelances(categorieChoisie) {
+
+  colonnesFreelances.forEach(function (colonne) {
+
+    const categorieColonne = colonne.dataset.categorie;
+
+    if (categorieChoisie === 'tous' || categorieColonne === categorieChoisie) {
+      // La carte correspond au filtre : on l'affiche
+      colonne.style.display = 'block';
+    } else {
+      // La carte ne correspond pas : on la cache
+      colonne.style.display = 'none';
+    }
+  });
+}
+
+// On écoute le clic sur chaque bouton de filtre
+boutonsFiltres.forEach(function (bouton) {
+
+  bouton.addEventListener('click', function () {
+
+    // On retire la classe "actif" de tous les boutons
+    boutonsFiltres.forEach(function (b) {
+      b.classList.remove('actif');
+    });
+
+    // On ajoute la classe "actif" sur le bouton cliqué
+    bouton.classList.add('actif');
+
+    // On récupère la catégorie depuis l'attribut data-categorie
+    const categorie = bouton.dataset.categorie;
+
+    // On lance le filtrage
+    filtrerFreelances(categorie);
+  });
+});
+
+
+/* ==========================================
+   7. VALIDATION DU FORMULAIRE DE CONTACT
+   ========================================== */
+
+const formulaire = document.getElementById('formulaireContact');
+
+// --- Fonctions utilitaires ---
+
+// Affiche un message d'erreur sous un champ
+function afficherErreur(idErreur, message) {
+  const zoneErreur = document.getElementById(idErreur);
+  if (zoneErreur) {
+    zoneErreur.textContent = message;
+  }
+}
+
+// Efface le message d'erreur d'un champ
+function effacerErreur(idErreur) {
+  const zoneErreur = document.getElementById(idErreur);
+  if (zoneErreur) {
+    zoneErreur.textContent = '';
+  }
+}
+
+// Marque un champ comme invalide (bordure rouge)
+function marquerInvalide(champ) {
+  champ.classList.remove('valide');
+  champ.classList.add('invalide');
+}
+
+// Marque un champ comme valide (bordure verte)
+function marquerValide(champ) {
+  champ.classList.remove('invalide');
+  champ.classList.add('valide');
+}
+
+// Vérifie le format d'un email avec une regex
+// La regex vérifie qu'il y a : quelquechose @ quelquechose . quelquechose
+function estEmailValide(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+
+
+// --- Validation de chaque champ ---
+
+function validerPrenom() {
+  const champ = document.getElementById('prenom');
+  if (!champ) return true;
+
+  const valeur = champ.value.trim(); // trim() supprime les espaces inutiles
+
+  if (valeur === '') {
+    marquerInvalide(champ);
+    afficherErreur('erreur-prenom', 'Le prénom est obligatoire.');
+    return false;
+  }
+
+  marquerValide(champ);
+  effacerErreur('erreur-prenom');
+  return true;
+}
+
+function validerNom() {
+  const champ = document.getElementById('nom');
+  if (!champ) return true;
+
+  const valeur = champ.value.trim();
+
+  if (valeur === '') {
+    marquerInvalide(champ);
+    afficherErreur('erreur-nom', 'Le nom est obligatoire.');
+    return false;
+  }
+
+  marquerValide(champ);
+  effacerErreur('erreur-nom');
+  return true;
+}
+
+function validerEmail() {
+  const champ = document.getElementById('email');
+  if (!champ) return true;
+
+  const valeur = champ.value.trim();
+
+  if (valeur === '') {
+    marquerInvalide(champ);
+    afficherErreur('erreur-email', "L'email est obligatoire.");
+    return false;
+  }
+
+  if (!estEmailValide(valeur)) {
+    marquerInvalide(champ);
+    afficherErreur('erreur-email', "Le format de l'email est invalide (ex: nom@email.com).");
+    return false;
+  }
+
+  marquerValide(champ);
+  effacerErreur('erreur-email');
+  return true;
+}
+
+function validerSujet() {
+  const champ = document.getElementById('sujet');
+  if (!champ) return true;
+
+  if (champ.value === '') {
+    marquerInvalide(champ);
+    afficherErreur('erreur-sujet', 'Veuillez choisir un sujet.');
+    return false;
+  }
+
+  marquerValide(champ);
+  effacerErreur('erreur-sujet');
+  return true;
+}
+
+function validerMessage() {
+  const champ = document.getElementById('message');
+  if (!champ) return true;
+
+  const valeur = champ.value.trim();
+
+  if (valeur === '') {
+    marquerInvalide(champ);
+    afficherErreur('erreur-message', 'Le message est obligatoire.');
+    return false;
+  }
+
+  // Le message doit faire au moins 20 caractères
+  if (valeur.length < 20) {
+    marquerInvalide(champ);
+    afficherErreur(
+      'erreur-message',
+      `Message trop court : ${valeur.length}/20 caractères minimum.`
+    );
+    return false;
+  }
+
+  marquerValide(champ);
+  effacerErreur('erreur-message');
+  return true;
+}
+
+
+// --- Validation en temps réel (pendant la saisie) ---
+// L'utilisateur voit les erreurs disparaître au fur et à mesure
+
+const champPrenom = document.getElementById('prenom');
+const champNom = document.getElementById('nom');
+const champEmail = document.getElementById('email');
+const champSujet = document.getElementById('sujet');
+const champMessage = document.getElementById('message');
+
+if (champPrenom) champPrenom.addEventListener('input', validerPrenom);
+if (champNom)    champNom.addEventListener('input', validerNom);
+if (champEmail)  champEmail.addEventListener('input', validerEmail);
+if (champSujet)  champSujet.addEventListener('change', validerSujet);
+if (champMessage) champMessage.addEventListener('input', validerMessage);
+
+
+// --- Soumission du formulaire ---
+
+if (formulaire) {
+
+  formulaire.addEventListener('submit', function (event) {
+
+    // On empêche le rechargement de la page (comportement par défaut)
+    event.preventDefault();
+
+    // On valide tous les champs
+    const prenomOk  = validerPrenom();
+    const nomOk     = validerNom();
+    const emailOk   = validerEmail();
+    const sujetOk   = validerSujet();
+    const messageOk = validerMessage();
+
+    // Si tous les champs sont valides
+    if (prenomOk && nomOk && emailOk && sujetOk && messageOk) {
+
+      // On affiche le message de succès
+      const messageSucces = document.getElementById('message-succes');
+      if (messageSucces) {
+        messageSucces.style.display = 'block';
+      }
+
+      // On remet le formulaire à zéro
+      formulaire.reset();
+
+      // On retire les classes valide/invalide
+      const tousLesChamps = formulaire.querySelectorAll('input, select, textarea');
+      tousLesChamps.forEach(function (champ) {
+        champ.classList.remove('valide', 'invalide');
+      });
+
+      // On cache le message de succès après 5 secondes
+      setTimeout(function () {
+        if (messageSucces) {
+          messageSucces.style.display = 'none';
+        }
+      }, 5000);
+    }
+  });
+}
