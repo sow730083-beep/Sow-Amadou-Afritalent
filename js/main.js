@@ -479,3 +479,22 @@ if (formulaire) {
     }
   });
 }
+
+
+/* ============================================
+   AFRITALENT — main.js
+   Commit 9 : Finalisation — année dynamique + commentaires
+   ============================================ */
+
+
+/* ==========================================
+   8. ANNÉE DYNAMIQUE DANS LE FOOTER
+   ========================================== */
+
+// new Date() crée un objet date avec la date d'aujourd'hui
+// getFullYear() extrait uniquement l'année (ex: 2026)
+const elementAnnee = document.getElementById('annee');
+
+if (elementAnnee) {
+  elementAnnee.textContent = new Date().getFullYear();
+}

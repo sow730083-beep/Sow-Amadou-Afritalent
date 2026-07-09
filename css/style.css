@@ -853,3 +853,60 @@ footer h5 {
   border-color: var(--couleur-primaire);
   color: var(--couleur-primaire);
 }
+
+
+/* ========== FOOTER COMPLET ========== */
+footer {
+  background-color: #0D1F17;
+  color: rgba(255, 255, 255, 0.75);
+  padding: 60px 0 24px;
+}
+
+footer h3,
+footer h4 {
+  color: white;
+  margin-bottom: 16px;
+  font-size: 1rem;
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+footer ul li {
+  padding: 6px 0;
+  font-size: 0.9rem;
+}
+
+footer ul li a {
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.2s;
+}
+
+footer ul li a:hover {
+  color: var(--couleur-secondaire);
+}
+
+footer .reseaux {
+  margin-top: 16px;
+}
+
+footer .reseaux a {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.3rem;
+  margin-right: 12px;
+  transition: color 0.2s;
+}
+
+footer .reseaux a:hover {
+  color: var(--couleur-secondaire);
+}
+
+.copyright {
+  text-align: center;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+  margin-bottom: 0;
+}
